@@ -32,6 +32,19 @@ export class Game {
 
     this._loop = this._loop.bind(this);
     this._lastTs = 0;
+
+    this.slowMo = false;
+    this.updateSkip = 0;
+    this.cheatBuffer = "";
+    window.addEventListener("keydown", (e) => {
+      if (e.key && e.key.length === 1) {
+        this.cheatBuffer = (this.cheatBuffer + e.key.toLowerCase()).slice(-5);
+        if (this.cheatBuffer === "cheat") {
+          this.slowMo = !this.slowMo;
+          if (this.sounds && this.sounds.powerUp) this.sounds.powerUp();
+        }
+      }
+    });
   }
 
   onWin(cb)  { this._onWinCb = cb; }
@@ -72,7 +85,17 @@ export class Game {
     const dt = Math.min(ts - this._lastTs, 50);
     this._lastTs = ts;
 
-    if (this.state === "playing") this._update(dt);
+    if (this.state === "playing") {
+      if (this.slowMo) {
+        this.updateSkip++;
+        if (this.updateSkip >= 4) {
+          this.updateSkip = 0;
+          this._update(dt); // Pass unscaled dt so the game timer also slows down
+        }
+      } else {
+        this._update(dt);
+      }
+    }
     this._draw();
 
     if (this._running) requestAnimationFrame(this._loop);

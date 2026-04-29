@@ -1,0 +1,72 @@
+@use "sass:color";
+@use "variables" as *;
+
+.overlay {
+  position: absolute;
+  inset: 60px 0 0 0; // leave HUD visible
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+
+  &.hidden {
+    display: none;
+  }
+
+  h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+    color: $accent;
+    text-shadow: 4px 4px 0 $mario-red, 8px 8px 0 #000;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #fff;
+  }
+
+  &__hint {
+    font-size: 11px !important;
+    color: #bbb !important;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 14px 36px;
+    font-family: $font-game;
+    font-size: 14px;
+    color: #fff;
+    background: $mario-red;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: transform 0.1s, box-shadow 0.1s;
+
+    &:hover {
+      background: color.adjust($mario-red, $lightness: 8%);
+    }
+
+    &:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 #000;
+    }
+  }
+
+  &--win h1 {
+    color: $princess-gold;
+    text-shadow: 4px 4px 0 $princess-pink, 8px 8px 0 #000;
+  }
+
+  &--lose h1 {
+    color: #fff;
+    text-shadow: 4px 4px 0 #444, 8px 8px 0 #000;
+  }
+}

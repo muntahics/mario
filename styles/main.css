@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #111;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-wrapper {
+  position: relative;
+  width: 960px;
+  height: calc(540px + 60px);
+  background: #5c94fc;
+  border: 4px solid #000;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.hud {
+  height: 60px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 24px;
+  border-bottom: 4px solid #333;
+}
+.hud__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.hud__label {
+  font-size: 12px;
+  color: #ffcc00;
+  letter-spacing: 2px;
+}
+.hud__value {
+  font-size: 16px;
+  color: #fff;
+}
+
+canvas {
+  display: block;
+  width: 960px;
+  height: 540px;
+  background: linear-gradient(180deg, #5c94fc 0%, #3a6fe0 100%);
+  image-rendering: pixelated;
+}
+
+.overlay {
+  position: absolute;
+  inset: 60px 0 0 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+}
+.overlay.hidden {
+  display: none;
+}
+.overlay h1 {
+  font-size: 42px;
+  letter-spacing: 4px;
+  color: #ffcc00;
+  text-shadow: 4px 4px 0 #e52521, 8px 8px 0 #000;
+}
+.overlay p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #fff;
+}
+.overlay__hint {
+  font-size: 11px !important;
+  color: #bbb !important;
+  margin-top: 10px;
+}
+.overlay button {
+  margin-top: 20px;
+  padding: 14px 36px;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 14px;
+  color: #fff;
+  background: #e52521;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.overlay button:hover {
+  background: rgb(233.2774193548, 72.864516129, 69.5225806452);
+}
+.overlay button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #000;
+}
+.overlay--win h1 {
+  color: #ffd166;
+  text-shadow: 4px 4px 0 #ff9ecf, 8px 8px 0 #000;
+}
+.overlay--lose h1 {
+  color: #fff;
+  text-shadow: 4px 4px 0 #444, 8px 8px 0 #000;
+}

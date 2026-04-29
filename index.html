@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Mario - Save the Princess</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div class="game-wrapper">
+      <header class="hud">
+        <div class="hud__item">
+          <span class="hud__label">MARIO</span>
+          <span class="hud__value" id="score">000000</span>
+        </div>
+        <div class="hud__item">
+          <span class="hud__label">TIME</span>
+          <span class="hud__value" id="time">400</span>
+        </div>
+        <div class="hud__item">
+          <span class="hud__label">LIVES</span>
+          <span class="hud__value" id="lives">3</span>
+        </div>
+      </header>
+
+      <canvas id="game" width="960" height="540"></canvas>
+
+      <div class="overlay overlay--start" id="start-screen">
+        <h1>SUPER MARIO</h1>
+        <p>Save the Princess!</p>
+        <p class="overlay__hint">Arrow Keys / WASD to move &bull; Space to jump</p>
+        <button id="start-btn">START</button>
+      </div>
+
+      <div class="overlay overlay--win hidden" id="win-screen">
+        <h1>YOU WIN!</h1>
+        <p>The Princess is saved!</p>
+        <button id="restart-btn">PLAY AGAIN</button>
+      </div>
+
+      <div class="overlay overlay--lose hidden" id="lose-screen">
+        <h1>GAME OVER</h1>
+        <p>Try again, hero.</p>
+        <button id="retry-btn">RETRY</button>
+      </div>
+    </div>
+
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+</html>

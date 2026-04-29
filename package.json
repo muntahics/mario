@@ -1,0 +1,14 @@
+{
+  "name": "mario-save-the-princess",
+  "version": "1.0.0",
+  "description": "A one-scene Mario-style platformer built with HTML, SCSS, and vanilla JavaScript.",
+  "private": true,
+  "scripts": {
+    "build:css": "sass styles/main.scss styles/main.css --no-source-map",
+    "watch:css": "sass styles/main.scss styles/main.css --watch",
+    "serve": "npx --yes http-server -c-1 -p 8645 ."
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}
